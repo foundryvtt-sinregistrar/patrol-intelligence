@@ -1,6 +1,6 @@
 import { MODULE_ID } from "./constants.mjs";
 import { ControlManager } from "./control/control-manager.mjs";
-import { getTokenConfig } from "./control/token-config.mjs";
+import { getTokenConfig, setTokenConfig } from "./control/token-config.mjs";
 import { registerPatrolObservers } from "./integrations/patrol-adapter.mjs";
 import { registerSettings } from "./settings.mjs";
 
@@ -21,10 +21,12 @@ Hooks.once("ready", () => {
     return;
   }
 
+  const control = new ControlManager();
   game.modules.get(MODULE_ID).api = Object.freeze({
-    control: new ControlManager(),
-    getTokenConfig
+    control,
+    getTokenConfig,
+    setTokenConfig
   });
-  registerPatrolObservers();
+  registerPatrolObservers({ controlManager: control });
   console.info(`${MODULE_ID} | passive Patrol observers registered.`);
 });

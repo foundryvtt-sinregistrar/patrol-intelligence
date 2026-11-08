@@ -5,6 +5,18 @@
         "Name": "Registro de depuración",
         "Hint": "Registra los hooks de detección observados de Patrol en la consola del navegador del DJ. No modifica el comportamiento de Patrol."
       }
+    },
+    "Actions": {
+      "OBSERVE": "observar",
+      "INVESTIGATE": "investigar",
+      "WARN": "advertir",
+      "NOTIFY_DM": "notificar al DJ",
+      "PURSUE": "perseguir",
+      "FLEE": "huir"
+    },
+    "Notifications": {
+      "Proposal": "{name}: respuesta propuesta: {action}.",
+      "ApprovalRequired": "Se requiere aprobación del DJ."
     }
   }
 }

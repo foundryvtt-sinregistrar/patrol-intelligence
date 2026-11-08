@@ -5,6 +5,18 @@
         "Name": "Debug logging",
         "Hint": "Log observed Patrol detection hooks to the GM browser console. This does not change Patrol behavior."
       }
+    },
+    "Actions": {
+      "OBSERVE": "observe",
+      "INVESTIGATE": "investigate",
+      "WARN": "warn",
+      "NOTIFY_DM": "notify the GM",
+      "PURSUE": "pursue",
+      "FLEE": "flee"
+    },
+    "Notifications": {
+      "Proposal": "{name}: proposed response: {action}.",
+      "ApprovalRequired": "GM approval is required."
     }
   }
 }

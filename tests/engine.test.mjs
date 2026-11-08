@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import test from "node:test";
 import { ACTIONS } from "../scripts/engine/behavior-profiles.mjs";
 import { DEFAULT_TOKEN_CONFIG, normalizeTokenConfig } from "../scripts/control/token-config.mjs";
+import { createDetectionContext } from "../scripts/integrations/detection-context.mjs";
 import { CooldownTracker, detectionKey } from "../scripts/engine/cooldown-tracker.mjs";
 import { CONTROL_MODES, proposeDecision } from "../scripts/engine/decision-engine.mjs";
 import { BEHAVIOR_STATES, canTransition, transition } from "../scripts/engine/state-machine.mjs";
@@ -49,4 +50,14 @@ test("token configuration starts disabled and rejects invalid input", () => {
   assert.equal(normalizeTokenConfig().enabled, false);
   assert.equal(normalizeTokenConfig({ mode: "INVALID", cooldownMs: -5 }).mode, DEFAULT_TOKEN_CONFIG.mode);
   assert.equal(normalizeTokenConfig({ mode: "INVALID", cooldownMs: -5 }).cooldownMs, 0);
+});
+
+test("detection context admits only a player-owned character target", () => {
+  const spotter = { document: { uuid: "Scene.a.Token.g", parent: { uuid: "Scene.a" } }, actor: { system: {} } };
+  const spotted = { document: { uuid: "Scene.a.Token.p" }, actor: { type: "character", hasPlayerOwner: true } };
+  const detection = createDetectionContext({
+    spotter, spotted, stage: "suspicious", config: DEFAULT_TOKEN_CONFIG, generation: 3
+  });
+  assert.equal(detection.isPlayerCharacterTarget, true);
+  assert.equal(detection.statistics.intelligence, null);
 });

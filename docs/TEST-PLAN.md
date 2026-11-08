@@ -16,3 +16,11 @@ Run `node --test tests/engine.test.mjs`. These tests cover state validation, mod
 1. On an enabled module in a D&D5e world, confirm `game.modules.get("patrol-intelligence").api.getTokenConfig(token.document)` returns a disabled `DM` configuration for an unconfigured token.
 2. From a GM client only, use the exposed control API to change a mode and verify that only the token's `flags.patrol-intelligence.config` changes.
 3. Confirm that the mode change does not stop, start, or otherwise alter Patrol movement.
+
+## Phase 4a manual checks
+
+1. Configure one Patrol token with `enabled: true` and `mode: AUTO` using the module API; leave another token at defaults.
+2. As the active GM, trigger a Patrol detection for the configured token and verify one GM-only proposal notification appears.
+3. Repeat inside its configured cooldown: no second notification should appear.
+4. Confirm no notification for the disabled token, a non-character target, a paused game, combat, or `DM` mode.
+5. With two GMs connected, confirm only Foundry's active GM sees a proposal.
