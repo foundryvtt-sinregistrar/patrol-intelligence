@@ -73,3 +73,14 @@ test("approval queue invalidates a proposal from an old generation", () => {
   assert.equal(resolved.status, "STALE");
   assert.equal(queue.list({ status: "PENDING" }).length, 0);
 });
+
+test("approval queue resolves a current proposal without executing it", () => {
+  const queue = new ProposalQueue();
+  const pending = queue.enqueue({
+    context: { spotterUuid: "Scene.a.Token.g", generation: 2 },
+    decision: { kind: "DECISION", requiresApproval: true }
+  });
+  const resolved = queue.resolve(pending.id, "REJECTED", { isCurrentGeneration: () => true });
+  assert.equal(resolved.status, "REJECTED");
+  assert.equal(queue.list({ status: "PENDING" }).length, 0);
+});

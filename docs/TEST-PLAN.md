@@ -30,3 +30,7 @@ Run `node --test tests/engine.test.mjs`. These tests cover state validation, mod
 1. Trigger a proposal requiring approval, then inspect `game.modules.get("patrol-intelligence").api.proposals.list()` from the active GM.
 2. Call `approve(id)` or `reject(id)` and verify its status changes. Neither call may move a token or update a document.
 3. Change the token mode before resolving a pending proposal; resolution must return `STALE`.
+
+## Release safety checks
+
+Follow `RELEASE-CHECKLIST.md` before declaring the module ready for a shared world.
