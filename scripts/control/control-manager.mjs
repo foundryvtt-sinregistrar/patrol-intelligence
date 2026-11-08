@@ -22,6 +22,10 @@ export class ControlManager {
     return this.getGeneration(tokenDocument) === generation;
   }
 
+  isCurrentUuid(tokenUuid, generation) {
+    return (this.#generations.get(tokenUuid) ?? 0) === generation;
+  }
+
   async setMode(tokenDocument, mode) {
     if (!Object.values(CONTROL_MODES).includes(mode)) throw new TypeError(`Invalid control mode: ${mode}`);
     const generation = this.invalidate(tokenDocument);

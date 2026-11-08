@@ -8,4 +8,6 @@ Phase 3a persists an opt-in configuration under `flags.patrol-intelligence.confi
 
 Phase 4a normalizes a Patrol hook into a `DetectionContext`, proposes an action, and emits a local notification only on Foundry's `game.users.activeGM` client. It observes only configured, enabled tokens in `AUTO`; all proposals are cooldown-deduplicated in memory. It still performs no actions.
 
+Phase 4b queues only approval-required decisions in the active GM's memory. Queue resolution validates the originating control generation and marks outdated work `STALE`; approval or rejection still has no action executor.
+
 No movement, HUD controls, socket messages, persistent behavior state, or action execution exists in this phase.

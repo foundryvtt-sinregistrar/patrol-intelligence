@@ -19,17 +19,17 @@ const STAGES = Object.freeze({
  * Observe Patrol's documented hook contract without changing its result.
  * In particular, pre-hooks deliberately return undefined instead of false.
  */
-export function registerPatrolObservers({ controlManager }) {
+export function registerPatrolObservers({ controlManager, proposalQueue }) {
   const cooldowns = new CooldownTracker();
   for (const hookName of PATROL_HOOKS) {
     Hooks.on(hookName, (spotter, spotted) => {
-      observeDetection({ hookName, spotter, spotted, controlManager, cooldowns });
+      observeDetection({ hookName, spotter, spotted, controlManager, cooldowns, proposalQueue });
       return undefined;
     });
   }
 }
 
-function observeDetection({ hookName, spotter, spotted, controlManager, cooldowns }) {
+function observeDetection({ hookName, spotter, spotted, controlManager, cooldowns, proposalQueue }) {
   if (!isActiveGMExecutor()) return;
 
   const config = getTokenConfig(spotter?.document);
@@ -54,6 +54,7 @@ function observeDetection({ hookName, spotter, spotted, controlManager, cooldown
 
   cooldowns.record(key, context.cooldownMs, now);
   debug(hookName, context, decision);
+  proposalQueue.enqueue({ context, decision });
   notifyGM(spotter, decision);
 }
 

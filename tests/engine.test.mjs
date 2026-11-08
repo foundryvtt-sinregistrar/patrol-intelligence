@@ -3,6 +3,7 @@ import test from "node:test";
 import { ACTIONS } from "../scripts/engine/behavior-profiles.mjs";
 import { DEFAULT_TOKEN_CONFIG, normalizeTokenConfig } from "../scripts/control/token-config.mjs";
 import { createDetectionContext } from "../scripts/integrations/detection-context.mjs";
+import { ProposalQueue } from "../scripts/engine/proposal-queue.mjs";
 import { CooldownTracker, detectionKey } from "../scripts/engine/cooldown-tracker.mjs";
 import { CONTROL_MODES, proposeDecision } from "../scripts/engine/decision-engine.mjs";
 import { BEHAVIOR_STATES, canTransition, transition } from "../scripts/engine/state-machine.mjs";
@@ -60,4 +61,15 @@ test("detection context admits only a player-owned character target", () => {
   });
   assert.equal(detection.isPlayerCharacterTarget, true);
   assert.equal(detection.statistics.intelligence, null);
+});
+
+test("approval queue invalidates a proposal from an old generation", () => {
+  const queue = new ProposalQueue();
+  const pending = queue.enqueue({
+    context: { spotterUuid: "Scene.a.Token.g", generation: 1 },
+    decision: { kind: "DECISION", requiresApproval: true }
+  });
+  const resolved = queue.resolve(pending.id, "APPROVED", { isCurrentGeneration: () => false });
+  assert.equal(resolved.status, "STALE");
+  assert.equal(queue.list({ status: "PENDING" }).length, 0);
 });

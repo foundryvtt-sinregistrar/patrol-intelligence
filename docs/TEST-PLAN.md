@@ -24,3 +24,9 @@ Run `node --test tests/engine.test.mjs`. These tests cover state validation, mod
 3. Repeat inside its configured cooldown: no second notification should appear.
 4. Confirm no notification for the disabled token, a non-character target, a paused game, combat, or `DM` mode.
 5. With two GMs connected, confirm only Foundry's active GM sees a proposal.
+
+## Phase 4b manual checks
+
+1. Trigger a proposal requiring approval, then inspect `game.modules.get("patrol-intelligence").api.proposals.list()` from the active GM.
+2. Call `approve(id)` or `reject(id)` and verify its status changes. Neither call may move a token or update a document.
+3. Change the token mode before resolving a pending proposal; resolution must return `STALE`.
