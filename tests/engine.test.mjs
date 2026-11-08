@@ -1,6 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 import { ACTIONS } from "../scripts/engine/behavior-profiles.mjs";
+import { DEFAULT_TOKEN_CONFIG, normalizeTokenConfig } from "../scripts/control/token-config.mjs";
 import { CooldownTracker, detectionKey } from "../scripts/engine/cooldown-tracker.mjs";
 import { CONTROL_MODES, proposeDecision } from "../scripts/engine/decision-engine.mjs";
 import { BEHAVIOR_STATES, canTransition, transition } from "../scripts/engine/state-machine.mjs";
@@ -42,4 +43,10 @@ test("cooldown keys deduplicate the same observation", () => {
   tracker.record(key, 5000, 1000);
   assert.equal(tracker.isCoolingDown(key, 5999), true);
   assert.equal(tracker.isCoolingDown(key, 6000), false);
+});
+
+test("token configuration starts disabled and rejects invalid input", () => {
+  assert.equal(normalizeTokenConfig().enabled, false);
+  assert.equal(normalizeTokenConfig({ mode: "INVALID", cooldownMs: -5 }).mode, DEFAULT_TOKEN_CONFIG.mode);
+  assert.equal(normalizeTokenConfig({ mode: "INVALID", cooldownMs: -5 }).cooldownMs, 0);
 });

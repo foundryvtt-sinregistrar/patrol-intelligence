@@ -10,3 +10,9 @@
 ## Phase 2 automated checks
 
 Run `node --test tests/engine.test.mjs`. These tests cover state validation, mode blocking, default authorization, deterministic profiles, and cooldown expiry without requiring Foundry.
+
+## Phase 3a manual checks
+
+1. On an enabled module in a D&D5e world, confirm `game.modules.get("patrol-intelligence").api.getTokenConfig(token.document)` returns a disabled `DM` configuration for an unconfigured token.
+2. From a GM client only, use the exposed control API to change a mode and verify that only the token's `flags.patrol-intelligence.config` changes.
+3. Confirm that the mode change does not stop, start, or otherwise alter Patrol movement.

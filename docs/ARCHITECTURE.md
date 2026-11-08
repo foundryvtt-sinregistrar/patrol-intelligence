@@ -4,4 +4,6 @@
 
 The pure Phase 2 engine adds a validated behavioral state machine, default behavior profiles, deterministic decision proposals, in-memory cooldown tracking, and generation checks. It is not yet wired to hooks and cannot perform actions.
 
-No authority election, token flags, movement, HUD controls, socket messages, or action execution exists in this phase.
+Phase 3a persists an opt-in configuration under `flags.patrol-intelligence.config`. The default is disabled and `DM`. `ControlManager` invalidates its own future work through an in-memory generation before saving a mode change. It does **not** claim to stop Patrol or provide a manual-control UI.
+
+No authority election, movement, HUD controls, socket messages, or action execution exists in this phase.
