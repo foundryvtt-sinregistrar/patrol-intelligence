@@ -1,0 +1,30 @@
+export const PROFILES = Object.freeze({
+  GUARD: "GUARD",
+  CIVILIAN: "CIVILIAN",
+  ANIMAL: "ANIMAL",
+  HOSTILE: "HOSTILE"
+});
+
+export const ACTIONS = Object.freeze({
+  OBSERVE: "OBSERVE",
+  INVESTIGATE: "INVESTIGATE",
+  WARN: "WARN",
+  NOTIFY_DM: "NOTIFY_DM",
+  PURSUE: "PURSUE",
+  FLEE: "FLEE"
+});
+
+const REACTIONS = Object.freeze({
+  GUARD: { SUSPICIOUS: [ACTIONS.INVESTIGATE, ACTIONS.NOTIFY_DM], ALERTED: [ACTIONS.WARN, ACTIONS.NOTIFY_DM, ACTIONS.PURSUE] },
+  CIVILIAN: { SUSPICIOUS: [ACTIONS.OBSERVE, ACTIONS.NOTIFY_DM], ALERTED: [ACTIONS.FLEE, ACTIONS.NOTIFY_DM] },
+  ANIMAL: { SUSPICIOUS: [ACTIONS.OBSERVE, ACTIONS.FLEE], ALERTED: [ACTIONS.FLEE, ACTIONS.NOTIFY_DM] },
+  HOSTILE: { SUSPICIOUS: [ACTIONS.INVESTIGATE, ACTIONS.OBSERVE], ALERTED: [ACTIONS.PURSUE, ACTIONS.NOTIFY_DM] }
+});
+
+export function normalizeProfile(profile) {
+  return Object.hasOwn(PROFILES, profile) ? profile : PROFILES.GUARD;
+}
+
+export function reactionsFor(profile, severity) {
+  return [...REACTIONS[normalizeProfile(profile)][severity] ?? [ACTIONS.NOTIFY_DM]];
+}
