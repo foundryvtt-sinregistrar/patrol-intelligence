@@ -1,0 +1,25 @@
+{
+  "id": "patrol-intelligence",
+  "title": "Patrol Intelligence",
+  "description": "Passive integration layer for Patrol NPC intelligence.",
+  "version": "0.1.0",
+  "authors": [{ "name": "Patrol Intelligence Contributors" }],
+  "compatibility": { "minimum": "14", "verified": "14.370" },
+  "relationships": {
+    "requires": [{
+      "id": "patrol",
+      "type": "module",
+      "compatibility": { "minimum": "5.0.10", "verified": "5.0.10" }
+    }],
+    "systems": [{
+      "id": "dnd5e",
+      "type": "system",
+      "compatibility": { "minimum": "6.0.6", "verified": "6.0.6" }
+    }]
+  },
+  "esmodules": ["scripts/main.mjs"],
+  "languages": [
+    { "lang": "en", "name": "English", "path": "lang/en.json" },
+    { "lang": "es", "name": "Español", "path": "lang/es.json" }
+  ]
+}

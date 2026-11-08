@@ -1,0 +1,10 @@
+{
+  "PATROL_INTELLIGENCE": {
+    "Settings": {
+      "Debug": {
+        "Name": "Registro de depuración",
+        "Hint": "Registra los hooks de detección observados de Patrol en la consola del navegador del DJ. No modifica el comportamiento de Patrol."
+      }
+    }
+  }
+}

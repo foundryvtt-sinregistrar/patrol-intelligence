@@ -1,0 +1,10 @@
+{
+  "PATROL_INTELLIGENCE": {
+    "Settings": {
+      "Debug": {
+        "Name": "Debug logging",
+        "Hint": "Log observed Patrol detection hooks to the GM browser console. This does not change Patrol behavior."
+      }
+    }
+  }
+}
