@@ -1,5 +1,7 @@
 # Patrol Intelligence
 
+Versión actual: **0.14.0**. Esquema `MAYOR.FOUNDRY.REVISIÓN`; el módulo sigue siendo experimental.
+
 Complemento experimental verificado en Foundry VTT 14.370, Patrol 5.0.12 y D&D5e 6.1.1. Convierte las etapas de detección de Patrol en propuestas deterministas para el DJ. No utiliza servicios externos ni modelos de lenguaje. [Detección real y dos clientes GM](docs/DND5E-6.1.1-VALIDATION.md)
 
 ## Estado actual
