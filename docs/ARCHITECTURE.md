@@ -11,3 +11,5 @@ Phase 4a normalizes a Patrol hook into a `DetectionContext`, proposes an action,
 Phase 4b queues only approval-required decisions in the active GM's memory. Queue resolution validates the originating control generation and marks outdated work `STALE`; approval or rejection still has no action executor.
 
 No movement, HUD controls, socket messages, persistent behavior state, or action execution exists in this phase.
+
+The existing passive flow was verified on 2026-11-27 with Foundry 14.370, D&D5e 6.1.1 and Patrol 5.0.12, including genuine detection and two simultaneous GM clients. No runtime or schema changes were required. Queues, cooldowns and control generations remain local to each client; they are not transferred on GM handoff. [Validation](DND5E-6.1.1-VALIDATION.md)

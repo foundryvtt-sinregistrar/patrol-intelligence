@@ -1,5 +1,11 @@
 # Test plan — Phase 1
 
+## Executed on 2026-11-27
+
+Foundry 14.370, D&D5e 6.1.1 and Patrol 5.0.12: all six genuine detection hooks, two simultaneous GM clients, executor-only proposals, cooldown, approval/rejection, stale generations, GM handoff, disabled tokens and DM mode passed. All nine Node tests passed. Test users, actors, scene and settings were cleaned up. This does not complete every release scenario below. [Evidence and reproduction](DND5E-6.1.1-VALIDATION.md)
+
+## Historical baseline
+
 1. Enable Patrol Intelligence in a D&D5e 6.0.6 world with Patrol 5.0.10 active.
 2. Confirm the module loads with no console errors.
 3. Enable **Debug logging** as a GM.

@@ -9,12 +9,12 @@
     "requires": [{
       "id": "patrol",
       "type": "module",
-      "compatibility": { "minimum": "5.0.10", "verified": "5.0.10" }
+      "compatibility": { "minimum": "5.0.10", "verified": "5.0.12" }
     }],
     "systems": [{
       "id": "dnd5e",
       "type": "system",
-      "compatibility": { "minimum": "6.0.6", "verified": "6.0.6" }
+      "compatibility": { "minimum": "6.0.6", "verified": "6.1.1" }
     }]
   },
   "esmodules": ["scripts/main.mjs"],
