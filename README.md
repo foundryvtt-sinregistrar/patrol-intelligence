@@ -26,3 +26,19 @@ Cuando Patrol detecte un personaje controlado por un jugador, el GM activo recib
 ## Verificación
 
 Ejecuta `node --test tests/engine.test.mjs` desde la carpeta del módulo. Las comprobaciones manuales de Foundry están en `docs/TEST-PLAN.md`.
+
+## Licencia y distribución
+
+El módulo utiliza la [licencia MIT](LICENSE), con el mismo texto que Spell Advancement. Esta licencia corresponde a Patrol Intelligence; Patrol se instala como dependencia independiente y no se incluye en el paquete.
+
+El canal de distribución es [GitHub Releases](https://github.com/foundryvtt-sinregistrar/patrol-intelligence/releases), con un archivo de nombre estable `patrol-intelligence.zip`. El [manifiesto de instalación](https://raw.githubusercontent.com/foundryvtt-sinregistrar/patrol-intelligence/main/module.json) sigue la rama `main`, igual que Spell Advancement.
+
+Para preparar el ZIP desde el commit de publicación, ejecuta desde la carpeta del repositorio (con el destino fuera de ella):
+
+```sh
+git archive --format=zip --prefix=patrol-intelligence/ --output=../patrol-intelligence.zip HEAD
+```
+
+Las reglas de exportación excluyen los archivos de desarrollo e incluyen la licencia. Al publicar, adjunta `patrol-intelligence.zip` y una copia de `module.json` del mismo commit a la release; comprueba que su versión coincide con la etiqueta y con el manifiesto de `main`.
+
+Las URLs están configuradas para la primera publicación. Su disponibilidad pública queda pendiente de subir el código y crear la release.
