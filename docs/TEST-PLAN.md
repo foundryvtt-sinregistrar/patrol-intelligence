@@ -6,6 +6,8 @@ Foundry 14.370, D&D5e 6.1.1 and Patrol 5.0.12: all six genuine detection hooks, 
 
 ## Historical baseline
 
+La [ampliación del 27-11-2026](DND5E-6.1.1-EXTENDED-VALIDATION.md) cubre además jugador conectado, denegación de escrituras del jugador, pausa, combate y restricciones concretas de visión. Los casos históricos siguientes conservan su versión original como referencia.
+
 1. Enable Patrol Intelligence in a D&D5e 6.0.6 world with Patrol 5.0.10 active.
 2. Confirm the module loads with no console errors.
 3. Enable **Debug logging** as a GM.

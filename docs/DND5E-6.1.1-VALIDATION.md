@@ -51,4 +51,6 @@ La cola, los cooldowns y las generaciones son locales y se pierden al cerrar o r
 
 ## Reanudación
 
+La [validación ampliada posterior](DND5E-6.1.1-EXTENDED-VALIDATION.md) cubre el cliente jugador, pausa, combate y restricciones concretas de visión que esta sesión inicial dejó fuera.
+
 Detección y ausencia de propuestas duplicadas con dos GM: comprobadas. No quedan módulos pendientes de los cinco puntos de compatibilidad con D&D5e 6.1.1. Evidencia preparada para integración local en `main`, sin push, tag ni release.

@@ -9,3 +9,5 @@ The 2026-11-27 compatibility check passed the existing passive detection flow on
 - [ ] Confirm a cooldown suppresses duplicate notifications.
 - [ ] Confirm paused games and active combat produce no proposal.
 - [ ] Do not mark manual control complete without a verified public Patrol per-token API.
+
+The [extended validation](DND5E-6.1.1-EXTENDED-VALIDATION.md) also passed connected-player privacy and authorization, pause, combat, hidden targets, opaque walls, Patrol Undetectable and an unlit target beyond darkvision on 6.1.1/5.0.12. Historical version checks and full MVP release readiness remain distinct.
